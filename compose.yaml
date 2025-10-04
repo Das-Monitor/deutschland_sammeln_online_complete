@@ -1,8 +1,6 @@
 services:
   db:
     build: ./database
-    ports:
-      - 5432:5432
     volumes:
       - my-db-volume:/var/lib/postgres
 
@@ -12,7 +10,11 @@ services:
       - 80:80
     depends_on:
       - db
+    networks:
+      - db
 
+networks:
+  - db
 
 volumes:
   my-db-volume:
