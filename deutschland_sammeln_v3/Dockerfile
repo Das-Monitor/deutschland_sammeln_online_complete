@@ -4,8 +4,8 @@ FROM rust:1.88-bookworm as builder
 
 # Install cargo-binstall, which makes it easier to install other
 # cargo extensions like cargo-leptos
-RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-x86_64-unknown-linux-musl.tgz
-RUN tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz
+RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-aarch64-unknown-linux-musl.tgz
+RUN tar -xvf cargo-binstall-aarch64-unknown-linux-musl.tgz
 RUN cp cargo-binstall /usr/local/cargo/bin
 
 # Install required tools
@@ -24,6 +24,7 @@ WORKDIR /app
 COPY . .
 
 # Build the app
+ENV LEPTOS_WASM_OPT_VERSION=version_124
 RUN cargo leptos build --release -vv
 
 FROM debian:bookworm-slim as runtime
@@ -48,7 +49,7 @@ COPY --from=builder /app/Cargo.toml /app/
 ENV RUST_LOG="info"
 ENV LEPTOS_SITE_ADDR="192.168.1.130:80"
 ENV LEPTOS_SITE_ROOT="site"
-ENV OUTPUT-NAME = "Online Sammeln"
+ENV OUTPUT-NAME="Online Sammeln"
 EXPOSE 80
 
 # -- NB: update binary name from "leptos_start" to match your app name in Cargo.toml --
