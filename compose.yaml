@@ -1,8 +1,6 @@
 services:
   db:
     build: ./database
-    environment:
-      POSTGRES_PASSWORD: "pgPassword"
     ports:
       - 5432:5432
     volumes:
