@@ -13,9 +13,5 @@ services:
     networks:
       - db
 
-networks:
-  - db;
-  - frontend;
-
 volumes:
   my-db-volume:
