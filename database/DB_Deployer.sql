@@ -1,3 +1,5 @@
+CREATE USER deutschland_sammeln_bot WITH PASSWORD 'wHz6ghG6!Fi$8uu3' CONNECT;
+
 CREATE TABLE gemeinden (
     id SERIAL PRIMARY KEY NOT NULL ,
     gemeinde_name TEXT NOT NULL,
