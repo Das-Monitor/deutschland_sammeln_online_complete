@@ -25,6 +25,7 @@ COPY . .
 
 # Build the app
 ENV LEPTOS_WASM_OPT_VERSION=version_124
+ENV DATABASE_URL=postgres://postgres:docker@localhost:5432/deutschland_sammeln
 RUN cargo leptos build --release -vv
 
 FROM debian:bookworm-slim as runtime
