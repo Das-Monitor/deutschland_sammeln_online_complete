@@ -3,6 +3,8 @@ services:
     build: ./database
     volumes:
       - my-db-volume:/var/lib/postgres
+    networks:
+      - db
 
   frontend:
     build: ./deutschland_sammeln_v3
@@ -12,6 +14,9 @@ services:
       - db
     networks:
       - db
+
+networks:
+  db:
 
 volumes:
   my-db-volume:
