@@ -4,9 +4,7 @@ services:
     volumes:
       - my-db-volume:/var/lib/postgres
     networks:
-      db:
-        aliases:
-          - local.db
+      - db
 
   frontend:
     build: ./deutschland_sammeln_v3
