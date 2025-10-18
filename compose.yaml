@@ -3,6 +3,7 @@ services:
     build: ./database
     volumes:
       - my-db-volume:/var/lib/postgres
+    restart: always
     networks:
       - db
 

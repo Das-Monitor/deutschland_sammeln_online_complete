@@ -12,6 +12,9 @@ RUN cp cargo-binstall /usr/local/cargo/bin
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends clang
 
+# Install cargo-sqlx
+# RUN cargo binstall sqlx-cli -y
+
 # Install cargo-leptos
 RUN cargo binstall cargo-leptos -y
 
@@ -25,7 +28,14 @@ COPY . .
 
 # Build the app
 ENV LEPTOS_WASM_OPT_VERSION=version_124
-ENV DATABASE_URL=postgresql://localhost:5432/deutschland_sammeln?user=deutschland_sammeln_bot&password=wHz6ghG6!Fi$8uu3
+ENV SQLX_OFFLINE=true
+# ENV DATABASE_URL=postgresql://localhost:5432/deutschland_sammeln?user=deutschland_sammeln_bot&password=wHz6ghG6-Fa$8uu3
+# ENV PGUSER=deutschland_sammeln_bot
+# ENV PGHOST=localhost
+# ENV PGDATABASE=deutschland_sammeln
+# ENV PGPASSWORD=wHz6ghG6-Fa$8uu3
+# ENV PGPORT=5432
+# RUN cargo sqlx prepare
 RUN cargo leptos build --release -vv
 
 FROM debian:bookworm-slim as runtime
