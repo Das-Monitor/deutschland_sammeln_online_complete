@@ -89,7 +89,7 @@ pub async fn init_db() {
 }
 
 #[cfg(feature = "ssr")]
-pub(crate) async fn enter_name_into_database(name: Arc<str>) -> Result<bool, ServerFnError> {
+pub async fn enter_name_into_database(name: Arc<str>) -> Result<bool, ServerFnError> {
     use std::ops::DerefMut;
     use sqlx::{query, Executor};
 
@@ -141,7 +141,7 @@ let _ = &transaction.execute(
 }
 
 #[cfg(feature = "ssr")]
-pub(crate) async fn get_unique_entries_from_database(start_date: Option<NaiveDateTime>) -> Result<Vec<String>, ServerFnError> {
+pub async fn get_unique_entries_from_database(start_date: Option<NaiveDateTime>) -> Result<Vec<String>, ServerFnError> {
     let mut connection = DB_POOL.get().unwrap().acquire().await?;
     
     let entry_list: Vec<String> = connection
