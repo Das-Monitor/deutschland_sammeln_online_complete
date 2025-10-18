@@ -1,0 +1,16 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO gemeinden (gemeinde_name, occasion, entry_timestamp) VALUES ($1, $2, $3)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Text",
+        "Timestamp"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "ba9a6927a3b2c72d316967d7cd5bf5de48369852d74a2ac397813d18bc4f3901"
+}

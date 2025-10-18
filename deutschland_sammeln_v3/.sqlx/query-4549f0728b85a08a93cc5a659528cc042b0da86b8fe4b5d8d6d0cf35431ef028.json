@@ -1,0 +1,23 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT gemeinde_name FROM gemeinden WHERE occasion = $1 AND entry_timestamp >= $2",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "gemeinde_name",
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Timestamp"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "4549f0728b85a08a93cc5a659528cc042b0da86b8fe4b5d8d6d0cf35431ef028"
+}
