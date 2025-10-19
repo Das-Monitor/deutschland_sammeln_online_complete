@@ -1,6 +1,6 @@
 services:
   db:
-    build: ./database#
+    build: ./database
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
