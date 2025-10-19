@@ -26,7 +26,7 @@ services:
       - frontend
 
   nginx:
-    build: ./nginx
+    image: nginx:latest
     restart: unless-stopped
     ports:
       - "443:443"
@@ -50,3 +50,5 @@ networks:
 volumes:
   my-db-volume:
   configs:
+  certs:
+  nginx.conf:
