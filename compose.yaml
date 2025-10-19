@@ -1,6 +1,11 @@
 services:
   db:
-    build: ./database
+    build: ./database#
+    environment:
+      - POSTGRES_USER: postgres
+      - POSTGRES_PASSWORD: docker
+      - POSTGRES_PORT: 5432
+      - POSTGRES_DB: deutschland_sammeln
     volumes:
       - my-db-volume:/var/lib/postgres
     restart: always
