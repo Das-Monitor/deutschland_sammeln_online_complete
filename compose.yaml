@@ -20,7 +20,6 @@ services:
       - "8080:8080"
     depends_on:
       - db
-      - nginx
     networks:
       - backend
       - frontend
@@ -36,6 +35,7 @@ services:
       - ./certs:/etc/letsencrypt
     depends_on:
       - certbot
+      - frontend
 
   certbot:
     image: certbot/certbot
