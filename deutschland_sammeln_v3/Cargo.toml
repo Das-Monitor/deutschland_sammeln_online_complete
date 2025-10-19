@@ -19,6 +19,8 @@ sqlx = { version = "0.8.6", features = ["postgres", "runtime-tokio", "chrono"], 
 serde = { version = "1.0.219", optional = true }
 toml = { version = "0.8.23", optional = true }
 chrono = { version = "0.4.41", features = ["serde"] }
+axum-server = { version = "0.7.2", optional = true, features = ["rustls", "tls-rustls-no-provider"] }
+rustls = { version = "0.23.33", optional = true }
 
 [features]
 hydrate = [
@@ -36,6 +38,8 @@ ssr = [
     "leptos/ssr",
     "leptos_meta/ssr",
     "leptos_router/ssr",
+    "dep:axum-server",
+    "dep:rustls"
 ]
 
 # Defines a size-optimized profile for the WASM bundle in release mode

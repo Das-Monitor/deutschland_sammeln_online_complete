@@ -57,8 +57,12 @@ COPY --from=builder /app/target/site /app/site
 COPY --from=builder /app/Cargo.toml /app/
 
 COPY db_config.toml /app/
+COPY /etc/letsencrypt/live/servers.neumann.ovh/fullchain.pem ./certs/servers.neumann.ovh/fullchain.pem
+COPY /etc/letsencrypt/live/servers.neumann.ovh/privkey.pem ./certs/servers.neumann.ovh/privkey.pem
 
 # Set any required env variables and
+ENV LIVE_CERT_PEM="./certs/servers.neumann.ovh/fullchain.pem"
+ENV LIVE_KEY_PEM="./certs/servers.neumann.ovh/privkey.pem"
 ENV RUST_LOG="info"
 ENV LEPTOS_SITE_ADDR="0.0.0.0:8080"
 ENV LEPTOS_SITE_ROOT="site"

@@ -1,4 +1,5 @@
 
+
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
@@ -7,6 +8,9 @@ async fn main() {
     use leptos::prelude::*;
     use leptos_axum::{generate_route_list, LeptosRoutes};
     use deutschland_sammeln_v3::app::*;
+    use axum_server::tls_rustls::RustlsConfig;
+    use std::path::PathBuf;
+    use std::env;
     
     deutschland_sammeln_v3::database::init_db().await;
 
@@ -27,10 +31,16 @@ async fn main() {
     // run our app with hyper
     // `axum::Server` is a re-export of `hyper::Server`
     log!("listening on http://{}", &addr);
-    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
-    axum::serve(listener, app.into_make_service())
-        .await
-        .unwrap();
+
+    let rustls_config = RustlsConfig::from_pem_file(
+        PathBuf::from(env::var("LIVE_CERT_PEM").expect("LIVE_CERT_PEM not set")),
+        PathBuf::from(env::var("LIVE_KEY_PEM").expect("LIVE_KEY_PEM not set")),
+    ).await.expect("Issues with https-certificates");
+
+    axum_server::bind_rustls(addr, rustls_config)
+        .serve(app.into_make_service())
+        .await.unwrap();
+
 }
 
 #[cfg(not(feature = "ssr"))]
