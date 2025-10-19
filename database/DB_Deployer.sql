@@ -1,5 +1,3 @@
-CREATE DATABASE deutschland_sammeln;
-
 CREATE USER deutschland_sammeln_bot WITH PASSWORD 'wHz6ghG6-Fa$8uu3' CONNECT;
 
 CREATE TABLE gemeinden (
