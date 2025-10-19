@@ -36,6 +36,8 @@ services:
     depends_on:
       - certbot
       - frontend
+    networks: 
+      - frontend
 
   certbot:
     image: certbot/certbot
