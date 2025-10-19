@@ -8,7 +8,7 @@ CREATE TABLE gemeinden (
     UNIQUE(gemeinde_name, occasion)
 );
 
-ALTER TABLE gemeinden owner to admin;
+ALTER TABLE gemeinden owner to postgres;
 grant insert, select, update on gemeinden to deutschland_sammeln_bot;
 
 CREATE TABLE gemeinde_entry (
@@ -20,7 +20,7 @@ CREATE TABLE gemeinde_entry (
     FOREIGN KEY (gemeinde_name, occasion) REFERENCES gemeinden(gemeinde_name, occasion)
 );
 
-ALTER TABLE gemeinde_entry owner to admin;
+ALTER TABLE gemeinde_entry owner to postgres;
 grant insert, select, update on gemeinde_entry to deutschland_sammeln_bot;
 
 CREATE TABLE gemeinde_result (
@@ -31,7 +31,7 @@ CREATE TABLE gemeinde_result (
     FOREIGN KEY (gemeinde_name, occasion) REFERENCES gemeinden(gemeinde_name, occasion)
 );
 
-ALTER TABLE gemeinde_result owner to admin;
+ALTER TABLE gemeinde_result owner to postgres;
 grant insert, select, update on gemeinde_result to deutschland_sammeln_bot;
 
 
