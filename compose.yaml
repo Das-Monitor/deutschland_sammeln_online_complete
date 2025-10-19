@@ -51,4 +51,5 @@ volumes:
   my-db-volume:
   configs:
   certs:
+    external: true
   nginx.conf:
