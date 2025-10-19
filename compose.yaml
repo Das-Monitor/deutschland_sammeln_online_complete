@@ -15,7 +15,7 @@ services:
   frontend:
     build: ./deutschland_sammeln_v3
     volumes:
-      - db_config.toml:/var/deutschland_sammeln_server/frontend/
+      - /home/david/servers/deutschland_sammeln_online_complete/deutschland_sammeln_v3/configs:/configs
     ports:
       - 8080:8080
     depends_on:
@@ -30,4 +30,5 @@ networks:
 
 volumes:
   my-db-volume:
-  db_config.toml:
+  configs:
+    external: true
