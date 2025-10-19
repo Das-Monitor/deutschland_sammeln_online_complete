@@ -10,19 +10,24 @@ services:
       - my-db-volume:/var/lib/postgres
     restart: always
     networks:
-      - db
+      - backend
 
   frontend:
     build: ./deutschland_sammeln_v3
+    volumes:
+      - db_config.toml:/var/deutschland_sammeln_server/frontend/
     ports:
-      - 80:80
+      - 8080:8080
     depends_on:
       - db
     networks:
-      - db
+      - backend
+      - frontend
 
 networks:
-  db:
+  backend:
+  frontend:
 
 volumes:
   my-db-volume:
+  db_config.toml:

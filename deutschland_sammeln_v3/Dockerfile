@@ -60,10 +60,10 @@ COPY db_config.toml /app/
 
 # Set any required env variables and
 ENV RUST_LOG="info"
-ENV LEPTOS_SITE_ADDR="192.168.1.130:80"
+ENV LEPTOS_SITE_ADDR="0.0.0.0:8080"
 ENV LEPTOS_SITE_ROOT="site"
 ENV OUTPUT-NAME="Online Sammeln"
-EXPOSE 80
+EXPOSE 8080
 
 # -- NB: update binary name from "leptos_start" to match your app name in Cargo.toml --
 # Run the server
