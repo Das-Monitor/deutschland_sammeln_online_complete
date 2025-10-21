@@ -15,7 +15,7 @@ services:
   frontend:
     build: ./deutschland_sammeln_v3
     volumes:
-      - backend_configs:/var/deutschland_sammeln_server/frontend/
+      - configs:/var/deutschland_sammeln_server/frontend/
     depends_on:
       - db
     networks:
@@ -25,7 +25,7 @@ services:
   backend:
     build: ./deutschland_sammeln_online_V3_backend
     volumes:
-    - frontend_configs:/var/deutschland_sammeln_server/backend/
+    - configs:/var/deutschland_sammeln_server/backend/
     depends_on:
       - db
     networks:
@@ -60,7 +60,6 @@ networks:
 
 volumes:
   my-db-volume:
-  frontend_configs:
-  backend_configs:
+  configs:
   certs:
   nginx.conf:
