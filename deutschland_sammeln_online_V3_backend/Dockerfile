@@ -17,12 +17,12 @@ FROM debian:bookworm-slim as runtime
 WORKDIR /app
 
 ## copy the main binary
-COPY --from=build /build/main ./
+COPY --from=builder /build/main ./
 
 ## copy runtime assets which may or may not exist
-# COPY --from=build /build/Rocket.tom[l] ./static
-# COPY --from=build /build/stati[c] ./static
-# COPY --from=build /build/template[s] ./templates
+COPY --from=builder /build/Rocket.tom[l] ./static
+COPY --from=builder /build/stati[c] ./static
+COPY --from=builder /build/template[s] ./templates
 
 COPY db_config.toml /configs
 
