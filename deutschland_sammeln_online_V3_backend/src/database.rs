@@ -39,7 +39,7 @@ pub async fn init_db() {
             .await.expect("Failed to read the config file");
     }
     else {
-        if !Path::new("./db_config.toml").exists() {
+        if !Path::new("/configs/db_config.toml").exists() {
             config_string = DEFAULT_CONFIG.to_string();
             println!("No config file \"db_config.toml\" could be found, deploying default config.");
             let mut file = File::create("./db_config.toml")
