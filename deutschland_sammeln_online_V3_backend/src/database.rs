@@ -63,6 +63,7 @@ pub async fn init_db() {
         &config.port,
         &config.database_name
     );
+    println!("Trying to connect to database under {}", &url);
     DB_POOL.set(PgPool::connect(&url).await.unwrap()).unwrap();
 }
 
