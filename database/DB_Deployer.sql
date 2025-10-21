@@ -34,7 +34,7 @@ CREATE TABLE gemeinde_result (
 ALTER TABLE gemeinde_result owner to postgres;
 grant insert, select, update on gemeinde_result to deutschland_sammeln_bot;
 
-CREATE USER credential_manager WITH PASSWORD 'HNB69tAcpcLg6d#';
+CREATE USER credential_manager WITH PASSWORD 'HNB69tAcpcLg6d';
 
 CREATE TABLE user_credentials (
     id SERIAL NOT NULL PRIMARY KEY,
