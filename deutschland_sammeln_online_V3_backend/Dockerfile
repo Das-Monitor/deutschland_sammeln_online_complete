@@ -26,7 +26,7 @@ COPY --from=builder /build/Rocket.tom[l] ./static
 COPY --from=builder /build/stati[c] ./static
 COPY --from=builder /build/template[s] ./templates
 
-COPY ./configs /configs
+COPY db_config.toml /configs
 
 ## ensure the container listens globally on port 8080
 ENV ROCKET_ADDRESS=0.0.0.0
