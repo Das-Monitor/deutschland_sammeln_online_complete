@@ -23,7 +23,7 @@ services:
       - frontend
 
   backend:
-    build: ./deutschland_sammeln_V3_backend
+    build: ./deutschland_sammeln_online_V3_backend
     volumes:
     - /var/deutschland_sammeln_server/backend/:/configs
     depends_on:
