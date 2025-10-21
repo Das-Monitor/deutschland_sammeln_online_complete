@@ -19,14 +19,14 @@ FROM debian:bookworm-slim as runtime
 WORKDIR /app
 
 ## copy the main binary
-COPY --from=builder /build/main ./
+COPY --from=builder /build/main /app/
 
 ## copy runtime assets which may or may not exist
 COPY --from=builder /build/Rocket.tom[l] ./static
 COPY --from=builder /build/stati[c] ./static
 COPY --from=builder /build/template[s] ./templates
 
-COPY db_config.toml /configs
+COPY db_config.toml /app/
 
 ## ensure the container listens globally on port 8080
 ENV ROCKET_ADDRESS=0.0.0.0
