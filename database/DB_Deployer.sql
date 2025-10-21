@@ -1,4 +1,4 @@
-CREATE USER creation_manager WITH PASSWORD 'HNB69tAcpcLg6d#';
+CREATE USER credential_manager WITH PASSWORD 'HNB69tAcpcLg6d#';
 
 CREATE TABLE user_credentials (
     id SERIAL NOT NULL PRIMARY KEY,
