@@ -22,6 +22,16 @@ services:
       - backend
       - frontend
 
+  backend:
+    build: ./deutschland_sammeln_V3_backend
+    volumes:
+    - /var/deutschland_sammeln_server/backend/:/configs
+    depends_on:
+      - db
+    networks:
+      - backend
+      - frontend 
+
   nginx:
     image: nginx:latest
     restart: unless-stopped

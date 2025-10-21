@@ -1,10 +1,6 @@
-FROM docker.io/rust:1-slim-bookworm AS build
-
-## cargo package name: customize here or provide via --build-arg
-ARG pkg=rocket-app
+FROM docker.io/rust:1.88--bookworm AS builder
 
 WORKDIR /build
-
 COPY . .
 
 RUN --mount=type=cache,target=/build/target \
@@ -16,7 +12,7 @@ RUN --mount=type=cache,target=/build/target \
 
 ################################################################################
 
-FROM docker.io/debian:bookworm-slim
+FROM debian:bookworm-slim as runtime
 
 WORKDIR /app
 
@@ -29,7 +25,7 @@ COPY --from=build /build/stati[c] ./static
 COPY --from=build /build/template[s] ./templates
 
 ## ensure the container listens globally on port 8080
-ENV ROCKET_ADDRESS=192.168.1.130
-ENV ROCKET_PORT=8080
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=7000
 
 CMD ./main

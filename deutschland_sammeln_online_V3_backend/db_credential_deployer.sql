@@ -1,10 +1,12 @@
+CREATE USER creation_manager WITH PASSWORD 'HNB69tAcpcLg6d#'
+
 CREATE TABLE user_credentials (
     id SERIAL NOT NULL PRIMARY KEY,
     username TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL
 );
 
-ALTER TABLE user_credentials OWNER TO admin;
+ALTER TABLE user_credentials OWNER TO postgres;
 
 GRANT SELECT ON user_credentials TO credential_manager;
 
@@ -16,7 +18,7 @@ CREATE TABLE user_sessions (
     UNIQUE (username, session_token)
 );
 
-ALTER TABLE user_sessions OWNER TO admin;
+ALTER TABLE user_sessions OWNER TO postgres;
 
 GRANT SELECT, INSERT, UPDATE ON user_sessions TO credential_manager;
 
