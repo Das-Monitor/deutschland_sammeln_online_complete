@@ -8,7 +8,7 @@
 // @grant 	 GM.xmlHttpRequest
 // ==/UserScript==
 
-const DB_LINK = "http://127.0.0.1:8000/database";
+const DB_LINK = "https://servers.neumann.ovh:7000/database";
 const USERNAME = "online_sammeln_bot";
 const PASSWORD = "XyN8sY@wyAH!@hZq"
 const ITERATION_DELAY = 750;
