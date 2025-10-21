@@ -56,7 +56,7 @@ pub async fn init_db() {
     let config: Config = toml::from_str(&config_string)
         .expect("Failed to parse the config file. Please fix, or delete to deploy new default file");
     let url = format!(
-        "postgres://{}:{}@{}:{}/{}",
+        "postgres://{}:\'{}\'@{}:{}/{}",
         &config.database_user,
         &config.database_password,
         &config.domain,
