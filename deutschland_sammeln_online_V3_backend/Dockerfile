@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/build/target \
     --mount=type=cache,target=/usr/local/cargo/git \
     set -eux; \
     cargo build --release; \
-    objcopy --compress-debug-sections target/release/$pkg ./main
+    objcopy --compress-debug-sections target/release/deutschland_sammeln_online_V3_backend ./main
 
 ################################################################################
 
