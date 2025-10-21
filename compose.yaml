@@ -61,6 +61,5 @@ networks:
 volumes:
   my-db-volume:
   configs:
-    external: true
   certs:
   nginx.conf:
