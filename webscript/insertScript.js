@@ -3,14 +3,13 @@
 // @version  1
 // @include  https://akigeo.com/wieviele/*
 // @include  akigeo.com/wieviele/*
-// @include  http://127.0.0.1:8000/*
-// @include  127.0.0.1:8000/*
+// @include  https://servers.neumann.ovh/*
 // @grant 	 GM.xmlHttpRequest
 // ==/UserScript==
 
-const DB_LINK = "https://servers.neumann.ovh:7000/database";
-const USERNAME = "online_sammeln_bot";
-const PASSWORD = "XyN8sY@wyAH!@hZq"
+const DB_LINK = "https://servers.neumann.ovh:600/database";
+const USERNAME = "";
+const PASSWORD = ""
 const ITERATION_DELAY = 750;
 const RESPONSE_WAIT_DELAYY = 300;
 const REPEAT_AMOUNT = 15;
@@ -25,13 +24,13 @@ console.log("Script started");
 
 async function loginAndGetSessionToken(){
   console.log("Started login attempt")
-  let waiting = true;
+	let waiting = true;
   let requestPromise = new Promise((resolve, reject) => {
-    async function responseHandler(response) {
+  	async function responseHandler(response) {
       console.log(response);
-      if (response["status"] != 202)
+      if (response["status"] != 202) 
         console.log(response);
-      //return await loginAndGetSessionToken();
+      	//return await loginAndGetSessionToken();
       token = response["responseText"];
       resolve(token)
     };
@@ -49,18 +48,18 @@ async function loginAndGetSessionToken(){
       onload: async function(response) {responseHandler(response);}
     });
   });
-  sessionToken = await requestPromise;
+	sessionToken = await requestPromise;
 }
 
 async function requestNewGemeindeNamenFromDatabase() {
   let requestPromise = new Promise((resolve, reject) => {
-    async function responseHandler(response) {
+  	 async function responseHandler(response) {
       console.log(response);
       if (response["status"] == 403) {
-        resolve(await loginAndGetSessionToken());
+      	resolve(await loginAndGetSessionToken());
       }
       if (response["status"] != 202) {
-        console.log(response);
+      	console.log(response);
       }
       result = JSON.parse(response["responseText"]);
       console.log(result);
@@ -80,7 +79,7 @@ async function requestNewGemeindeNamenFromDatabase() {
       onload: async function(response){responseHandler(response);}
     });
   });
-  requestResult = await requestPromise;
+	requestResult = await requestPromise;
   gemeindeNamenList = requestResult[0];
   latestTimestamp = requestResult[1] != null ? requestResult[1] : latestTimestamp;
   console.log(latestTimestamp);
@@ -88,12 +87,12 @@ async function requestNewGemeindeNamenFromDatabase() {
 
 
 async function insertNameIntoField(name) {
-
+  
   for (let i = 0; i < REPEAT_AMOUNT; i++){
     inputElement.value = name;
-    inputElement.dispatchEvent(new KeyboardEvent('keyup', {'key': 'Enter'}));
+    inputElement.dispatchEvent(new KeyboardEvent('keyup', {'key': 'Enter'})); 
   }
-
+  
   /*const result = unsafeWindow.solo.search_place(name, unsafeWindow.dataset.names, unsafeWindow.found);
   if (result === undefined) {
     return;
@@ -108,10 +107,10 @@ async function insertNameIntoField(name) {
 // This function will be called every ITERATION_DELAY ms due to iterationLoop later on
 async function mainIteration(){
   if (gemeindeNamenList.length == 0) {
-    await requestNewGemeindeNamenFromDatabase();
+  	await requestNewGemeindeNamenFromDatabase();
   }
   else {
-    await insertNameIntoField(gemeindeNamenList.pop());
+		await insertNameIntoField(gemeindeNamenList.pop());
   }
 }
 
@@ -127,8 +126,8 @@ async function iterationLoop(){
 // The main body of our Program
 (async function(){
   'use strict';
-
-  await loginAndGetSessionToken();
+  
+	await loginAndGetSessionToken();
   console.log("Login Attempt completed, moving on to Iteration Loop")
   await iterationLoop();
 })();
