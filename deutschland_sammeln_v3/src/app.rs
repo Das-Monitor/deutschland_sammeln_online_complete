@@ -39,7 +39,7 @@ pub fn App() -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/deutschland_sammeln_v3.css"/>
 
         // sets the document title
-        <Title text="Welcome to Leptos"/>
+        <Title text="Gemeinden Sammeln"/>
 
         // content for this welcome page
         <Router>
@@ -84,19 +84,20 @@ fn GemeindeNameInput(
     let on_submit = move |ev: SubmitEvent| {
         // stop the page from reloading!
         ev.prevent_default();
-        
-        let value = input_element
+
+        let input_field  = input_element
             .get()
-            .expect("<input> should be mounted")
-            .value();
+            .expect("<input> should be mounted");
+
+        let value = input_field.value().to_lowercase();
 
         let value_arc: Arc<str> = Arc::from(value.deref());
 
         set_name.set(value);
         clicked.set(true);
         
-        
         database_deferer.dispatch(value_arc.clone());
+        input_field.set_value("");
     };
 
     view! {

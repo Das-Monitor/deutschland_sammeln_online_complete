@@ -10,7 +10,7 @@
 const DB_LINK = "https://servers.neumann.ovh:600/database";
 const USERNAME = "";
 const PASSWORD = ""
-const ITERATION_DELAY = 750;
+const ITERATION_DELAY = 500;
 const RESPONSE_WAIT_DELAYY = 300;
 const REPEAT_AMOUNT = 15;
 
