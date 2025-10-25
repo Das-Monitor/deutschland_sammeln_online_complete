@@ -73,7 +73,7 @@ pub(crate) struct GemeindeDaten {
     last_timestamp: Option<NaiveDateTime>
 }
 
-pub(crate) async fn get_gemeinde_namen_from_database(starting_time: NaiveDateTime)
+pub(crate) async fn get_gemeinde_namen_from_database(occasion: &str, starting_time: NaiveDateTime)
     -> Result<GemeindeDaten, Box<dyn Error>>
 {
     let mut connection = DB_POOL.get().unwrap().acquire().await?;
@@ -81,7 +81,8 @@ pub(crate) async fn get_gemeinde_namen_from_database(starting_time: NaiveDateTim
     let (gemeinde_namen, time_stamps): (Vec<String>, Vec<NaiveDateTime>) = connection.fetch_all(
         query!(
             "SELECT gemeinde_name, entry_timestamp FROM gemeinden \
-            WHERE entry_timestamp > $1 ORDER BY gemeinde_name", starting_time
+            WHERE entry_timestamp > $1 AND occasion = $2 \
+            ORDER BY gemeinde_name", starting_time, occasion
             )
         ).await?
         .into_iter()

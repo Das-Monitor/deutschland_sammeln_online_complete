@@ -46,6 +46,7 @@ async fn login(data: Json<UserCredentials>)
 struct GemeindeDatenRequestData {
     username: String,
     token: String,
+    occasion: String,
     starting_timestamp: Option<NaiveDateTime>
 }
 
@@ -76,7 +77,9 @@ async fn sende_gemeinde_daten(data: Json<GemeindeDatenRequestData>)
     Ok(
         status::Accepted(
             Json(get_gemeinde_namen_from_database(
-                data.starting_timestamp.unwrap_or(NaiveDateTime::default())).await
+                &data.occasion,
+                data.starting_timestamp.unwrap_or(NaiveDateTime::default())
+            ).await
                 .map_err(
                     |e| {
                         println!("{:?}" ,e);

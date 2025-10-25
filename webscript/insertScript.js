@@ -10,9 +10,12 @@
 const DB_LINK = "https://servers.neumann.ovh:600/database";
 const USERNAME = "";
 const PASSWORD = ""
+
+const OCCASION = "indev-testing V2"
 const ITERATION_DELAY = 500;
 const RESPONSE_WAIT_DELAYY = 300;
 const REPEAT_AMOUNT = 15;
+
 
 var sessionToken = "test";
 var gemeindeNamenList = [];
@@ -74,6 +77,7 @@ async function requestNewGemeindeNamenFromDatabase() {
       data: JSON.stringify({
         "username": USERNAME,
         "token": sessionToken,
+        "occasion": OCCASION,
         "starting_timestamp": latestTimestamp
       }),
       onload: async function(response){responseHandler(response);}
