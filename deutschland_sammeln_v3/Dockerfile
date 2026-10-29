@@ -16,7 +16,7 @@ RUN apt-get update -y \
 # RUN cargo binstall sqlx-cli -y
 
 # Install cargo-leptos
-RUN cargo install cargo-leptos -y
+RUN cargo install cargo-leptos
 
 # Add the WASM target
 RUN rustup target add wasm32-unknown-unknown
