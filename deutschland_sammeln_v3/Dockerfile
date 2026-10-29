@@ -4,9 +4,9 @@ FROM rust:1.99-bookworm as builder
 
 # Install cargo-binstall, which makes it easier to install other
 # cargo extensions like cargo-leptos
-RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-aarch64-unknown-linux-musl.tgz
-RUN tar -xvf cargo-binstall-aarch64-unknown-linux-musl.tgz
-RUN cp cargo-binstall /usr/local/cargo/bin
+#RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-aarch64-unknown-linux-musl.tgz
+#RUN tar -xvf cargo-binstall-aarch64-unknown-linux-musl.tgz
+#RUN cp cargo-binstall /usr/local/cargo/bin
 
 # Install required tools
 RUN apt-get update -y \
@@ -16,7 +16,7 @@ RUN apt-get update -y \
 # RUN cargo binstall sqlx-cli -y
 
 # Install cargo-leptos
-RUN cargo binstall cargo-leptos -y
+RUN cargo install cargo-leptos -y
 
 # Add the WASM target
 RUN rustup target add wasm32-unknown-unknown
