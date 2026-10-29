@@ -1,0 +1,29 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT creation_timestamp, session_token FROM user_sessions WHERE username = $1 and session_token = $2 ORDER BY creation_timestamp DESC",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "creation_timestamp",
+        "type_info": "Timestamp"
+      },
+      {
+        "ordinal": 1,
+        "name": "session_token",
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "4cd83f9d1e7c5aedd307bd584912492e4bacac9d13e2498c3f5714dec662b726"
+}

@@ -1,0 +1,16 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO user_sessions(username, session_token, creation_timestamp) VALUES($1, $2, $3)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Text",
+        "Timestamp"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "41d293be46e7c799d554babce0692cd85de0a65fdb9736abeee81cb3d4dd5660"
+}
