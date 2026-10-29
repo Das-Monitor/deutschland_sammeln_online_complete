@@ -1,6 +1,6 @@
 # This Dockerfile currently uses the default dockerfile from the leptos book for leptos-ssr deployement
 # If you’re using stable, use this instead
-FROM rust:1.88-bookworm as builder
+FROM rust:1.99-bookworm as builder
 
 # Install cargo-binstall, which makes it easier to install other
 # cargo extensions like cargo-leptos
