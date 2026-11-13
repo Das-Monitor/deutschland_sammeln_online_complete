@@ -6,8 +6,9 @@ services:
       POSTGRES_PASSWORD: docker
       POSTGRES_PORT: 5432
       POSTGRES_DB: deutschland_sammeln
+      PG_DATA: /var/lib/postgres/data
     volumes:
-      - my-db-volume:/var/lib/postgres/18/docker
+      - my-db-volume:/var/lib/postgres/data
     restart: unless-stopped
     networks:
       - backend
