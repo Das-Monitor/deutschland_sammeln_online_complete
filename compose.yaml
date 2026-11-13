@@ -7,7 +7,7 @@ services:
       POSTGRES_PORT: 5432
       POSTGRES_DB: deutschland_sammeln
     volumes:
-      - my-db-volume:/var/lib/postgres
+      - my-db-volume:/var/lib/postgres/18/docker
     restart: unless-stopped
     networks:
       - backend
