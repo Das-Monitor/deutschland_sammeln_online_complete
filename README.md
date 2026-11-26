@@ -42,3 +42,14 @@ This may be fixed in the future by storing the state of the webscript on the ser
 ## Backend User Management
 This folder contains a small rust script to generate a hashed string for a given password. This string can then be entered into the database. Currently there is no automated way to insert passwords into the database
 so the data has to be entered manually on the final server.
+
+# Deployment
+The project is built to be deployed easily using docker.
+
+When deploying make sure to change the domain in the nginx.conf and the webscript. After deployement add a username and password into the database manually and add them to the webscript to allow the webscript to connect.
+
+# Note on passwords
+Sample passwords that are used in this project were generated using a random password generator. I would strongly recommend changing them for security purpose before deployement. In future updates it is planned to move all credentials and configuration to environment files or variables for docker-compose, to centralize them.
+
+# Declaration of AI Usage
+This project was build without direct usage of generative AI. I have no knowledge on the amount of usage of generative AI in dependencies of this project. 
